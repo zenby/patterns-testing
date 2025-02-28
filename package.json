@@ -1,0 +1,19 @@
+{
+  "name": "patterns-testing",
+  "version": "1.0.0",
+  "description": "patterns testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenby/patterns-testing.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zenby/patterns-testing/issues"
+  },
+  "homepage": "https://github.com/zenby/patterns-testing#readme"
+}
