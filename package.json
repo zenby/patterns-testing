@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "patterns testing",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/zenby/patterns-testing/issues"
   },
-  "homepage": "https://github.com/zenby/patterns-testing#readme"
+  "homepage": "https://github.com/zenby/patterns-testing#readme",
+  "devDependencies": {
+    "vitest": "^3.0.7"
+  }
 }
