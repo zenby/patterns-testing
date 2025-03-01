@@ -1,4 +1,4 @@
-import { expect, test, describe, vi, afterAll } from 'vitest';
+import { expect, test, describe, vi, afterAll, beforeEach } from 'vitest';
 import printTable from './refactored.js';
 
 const data = `city,population,area,density,country
@@ -16,6 +16,10 @@ Bangkok,8280925,1569,5279,Thailand`;
 describe('printTable', () => {
   const consoleMock = vi.spyOn(console, 'log');
 
+  beforeEach(() => {
+    consoleMock.mockReset();
+  });
+
   afterAll(() => {
     consoleMock.mockReset();
   });
@@ -30,14 +34,21 @@ describe('printTable', () => {
     printTable(`city,population,area,density,country
       Bangkok,8280925,1569,5279,Thailand`);
 
-    expect(consoleMock).toHaveBeenCalledTimes(0);
+    expect(consoleMock).toHaveBeenCalledTimes(1);
+  });
+
+  test('omits last empty newline', () => {
+    printTable(`city,population,area,density,country
+      Bangkok,8280925,1569,5279,Thailand
+      `);
+
+    expect(consoleMock).toHaveBeenCalledTimes(1);
   });
 
   test('print example table', () => {
     printTable(data);
 
-    expect(consoleMock).toHaveBeenCalledTimes(9);
-    expect(consoleMock).not.toHaveBeenCalledWith(expect.stringContaining('Bangkok'));
+    expect(consoleMock).toHaveBeenCalledTimes(10);
 
     expect(consoleMock).toHaveBeenNthCalledWith(
       1,
@@ -69,10 +80,14 @@ describe('printTable', () => {
     );
     expect(consoleMock).toHaveBeenNthCalledWith(
       8,
-      'Shanghai            24256800    6340    3826             China    28'
+      'Bangkok              8280925    1569    5279          Thailand    38'
     );
     expect(consoleMock).toHaveBeenNthCalledWith(
       9,
+      'Shanghai            24256800    6340    3826             China    28'
+    );
+    expect(consoleMock).toHaveBeenNthCalledWith(
+      10,
       'Istanbul            14160467    5461    2593            Turkey    19'
     );
   });

@@ -4,9 +4,9 @@ function printTable(data) {
   const table = [];
   let max = 0;
 
-  const lines = data.split('\n').slice(1, -1);
+  const lines = data.trim().split('\n').slice(1);
   for (const line of lines) {
-    const [city, population, area, density, country] = line.split(',');
+    const [city, population, area, density, country] = line.trim().split(',');
     const d = parseInt(density);
     max = Math.max(max, d);
     table.push([city, population, area, density, country]);
