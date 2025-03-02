@@ -1,10 +1,10 @@
-function printTable(data) {
-  if (!data) return;
+function printTable(text) {
+  if (!text) return;
 
   const table = [];
   let max = 0;
 
-  const lines = data.trim().split('\n').slice(1);
+  const lines = text.trim().split('\n').slice(1);
   if (lines.length === 0) return;
 
   for (const line of lines) {
@@ -20,8 +20,8 @@ function printTable(data) {
     row.push(a.toString());
   }
 
-  const printData = sortByDensity(table).map(buildFormattedRow).join('\n');
-  console.log(printData);
+  const output = getSortedByDensity(table).map(buildFormattedRow).join('\n');
+  console.log(output);
 }
 
 function getTableRowData(line) {
@@ -41,7 +41,7 @@ function buildFormattedRow(row) {
   return s;
 }
 
-function sortByDensity(arr) {
+function getSortedByDensity(arr) {
   return arr.toSorted((r1, r2) => r2[5] - r1[5]);
 }
 

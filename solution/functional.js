@@ -1,14 +1,14 @@
-function printTable(data) {
-  if (!data) return;
+function printTable(text) {
+  if (!text) return;
 
-  const lines = data.trim().split('\n').slice(1);
+  const lines = text.trim().split('\n').slice(1);
   const table = lines.map(getTableRowData);
   if (table.length === 0) return;
 
   const tableWithDensity = buildTableWithDensity(table);
   const sortedTable = sortTableByDensity(tableWithDensity);
-  const printData = cookPrintData(sortedTable);
-  console.log(printData);
+  const output = cookPrintData(sortedTable);
+  console.log(output);
 }
 
 function buildTableWithDensity(table) {
